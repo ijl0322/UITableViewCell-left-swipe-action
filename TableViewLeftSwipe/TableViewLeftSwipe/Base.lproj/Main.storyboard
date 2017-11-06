@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Zy9-jJ-yd7">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="wAU-Mg-UXs">
+            <objects>
+                <tableViewController id="Zy9-jJ-yd7" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" id="h5b-f9-JOG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="KhQ-dT-uwU">
+                                <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KhQ-dT-uwU" id="y1H-Ts-IxU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xax-gs-75g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65s-bp-7e1">
+                                                    <rect key="frame" x="0.0" y="7" width="199.5" height="126"/>
+                                                    <color key="backgroundColor" red="0.72133654359999999" green="0.94360941649999996" blue="0.99686402080000003" alpha="1" colorSpace="deviceRGB"/>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SYd-PJ-RIW" userLabel="Buttons Stack View">
+                                                    <rect key="frame" x="199.5" y="24.5" width="175.5" height="91"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oby-Xe-KAZ">
+                                                            <rect key="frame" x="0.0" y="0.5" width="175.5" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzH-6I-R9n">
+                                                            <rect key="frame" x="0.0" y="31.5" width="175.5" height="30"/>
+                                                            <state key="normal" title="Button"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tk0-Y2-rFm">
+                                                            <rect key="frame" x="0.0" y="61.5" width="175.5" height="30"/>
+                                                            <state key="normal" title="Button"/>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="tk0-Y2-rFm" firstAttribute="height" secondItem="SYd-PJ-RIW" secondAttribute="height" multiplier="0.33" id="3Co-B9-aZV"/>
+                                                        <constraint firstItem="Oby-Xe-KAZ" firstAttribute="height" secondItem="SYd-PJ-RIW" secondAttribute="height" multiplier="0.33" id="OnQ-uX-bml"/>
+                                                        <constraint firstItem="WzH-6I-R9n" firstAttribute="height" secondItem="SYd-PJ-RIW" secondAttribute="height" multiplier="0.33" id="S8x-eX-qrN"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SYd-PJ-RIW" firstAttribute="width" secondItem="Xax-gs-75g" secondAttribute="width" multiplier="0.5" constant="-12" id="QSS-cl-RL6"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Xax-gs-75g" firstAttribute="top" secondItem="y1H-Ts-IxU" secondAttribute="top" id="9Oh-Dn-26f"/>
+                                        <constraint firstAttribute="bottom" secondItem="Xax-gs-75g" secondAttribute="bottom" id="D5N-Hw-xSn"/>
+                                        <constraint firstItem="Xax-gs-75g" firstAttribute="leading" secondItem="y1H-Ts-IxU" secondAttribute="leading" id="S2g-Up-fxV"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xax-gs-75g" secondAttribute="trailing" id="VsE-iq-SvO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Zy9-jJ-yd7" id="cNB-Tu-0ty"/>
+                            <outlet property="delegate" destination="Zy9-jJ-yd7" id="7l7-dT-H9y"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6W-ei-6UC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="181.59999999999999" y="214.54272863568218"/>
+        </scene>
+    </scenes>
+</document>
