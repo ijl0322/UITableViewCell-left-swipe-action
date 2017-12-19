@@ -14,10 +14,14 @@ Table of Contents
   * [Installation](#installation)
   	* [Cocoapods](#cocoapods)
   	* [Carthage](#carthage)
+  * [Configuration](#configuration)
   * [Hello Littlstar - Boilerplate Code Example](#hello-littlstar)
   * [API Usage](#lsplayerdelegate-protocol)
     * [LSPlayerDelegate Protocols](#lsplayerdelegate-protocol)
-    * [LSPlayer Methods](#lsplayer)
+    * [LSPlayer](#lsplayer)
+      * [Initialization](#initialization)
+      * [Properties](#properties)
+      * [Functions](#functions)
     * [LSPlayer Gestures](#gestures)
 <br><br>
 
@@ -25,8 +29,12 @@ Installation
 -------
 ### Cocoapods
 Get [Cocoapods](http://guides.cocoapods.org/using/getting-started.html#installation)
-
-Add the pod to your podfile
+Navigate to the directory of the Xcode project.
+run
+```
+$ pod init
+```
+A podfile should be created. Add `pod 'ls-ios-sdk'` to your podfile
 ```
 platform :ios, "9.0"
 workspace 'Hello Littlstar 360 Player'
@@ -39,13 +47,17 @@ run
 ```
 $ pod install
 ```
-
+Make sure to open the xcworkspace generated rather than the xcodeproj file.
 After installing the cocoapod into your project import ls-ios-sdk with Swift
 `import ls_ios_sdk`
 <br><br>
 
 ### Carthage
 ….TODO
+<br><br>
+
+Configuration
+-------
 <br><br>
 
 Hello Littlstar
@@ -88,7 +100,7 @@ class ViewController: UIViewController {
 extension ViewController: LSPlayerDelegate {
   func lsPlayer(isBuffering: Bool) {
     if isBuffering {
-		print("Video is buffering")
+      print("Video is buffering")
     } else {
       print("Video is not buffering")
     }
@@ -99,7 +111,7 @@ extension ViewController: LSPlayerDelegate {
   }
 
   func lsPlayerReadyWithVideo(duration: Double) {
-  	player.play()
+    player.play()
     print("Player is ready to display the 360 video")
   }
 
@@ -108,7 +120,7 @@ extension ViewController: LSPlayerDelegate {
   }
 
   func lsPlayerHasEnded() {
-  	player.close()
+    player.close()
     print("Video has ended")
   }
 
@@ -156,6 +168,8 @@ Called when LSPlayer receives a tap.
 
 ## LSPlayer
 
+### Initialization
+
 #### init(frame: CGRect, withMenu: Bool = true)  
 
 Initialize a LSPlayer with or without the control menu that contains UI elements for controlling the video. (Play/Pause/VR cardboard mode/Seek)
@@ -181,6 +195,8 @@ player.initMedia("https://my360video.m3u8", withHeatmap: false)
 // init with heatmap logging
 player.initMedia("https://my360video.m3u8", withHeatmap: true)
 ```
+<br><br>
+### Properties
 
 #### delegate: LSPlayerDelegate?
 The delegate object that conforms to the LSPlayerDelegate protocol.    
@@ -218,6 +234,8 @@ if player.isMuted == false {
      player.isMuted = true
 }
 ```
+<br><br>
+### Functions
 
 #### invalidate()
 Destroy, clean up, and remove player.
@@ -275,16 +293,14 @@ player.pause()
 ```
 
 #### setVRMode(enable: Bool)
-Enter or exit VR mode.
-
-viewController - the viewController the LSPlayer is in. 
-enable - when set to true, enters VR mode. Exits VR mode when set to false. 
+Enter or exit VR cardboard mode.
+enable - when set to true, enters VR cardboard mode. Exits VR cardboard mode when set to false. 
 
 ```swift
-// Enter VR mode
+// Enter VR cardboard mode
 player.setVRMode(enable: true)
 
-// Exit VR mode
+// Exit VR cardboard mode
 player.setVRMode(enable: false)
 ```
 
