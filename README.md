@@ -58,20 +58,16 @@ class ViewController: UIViewController {
 
   var player: LSPlayer!
 
-  override var prefersStatusBarHidden: Bool {
-    return true
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    player = LSPlayer(frame: self.view.frame, viewController: self)
+    
+    player = LSPlayer(frame: self.view.frame)
+    player.delegate = self
     self.view.addSubview(player)
-
     let hlsExample = URL(string:"https://360.littlstar.com/production/76b490a5-2125-4281-b52d-8198ab0e817d/mobile_hls.m3u8")!
     player.initMedia(hlsExample)
   }
-
+  
   @objc func play() {
     if player.isPlaying {
       player.pause()
@@ -79,7 +75,7 @@ class ViewController: UIViewController {
       player.play()
     }
   }
-
+  
   @objc func mute() {
     if player.isMuted {
       player.isMuted = false
@@ -88,52 +84,105 @@ class ViewController: UIViewController {
     }
   }
 }
-```
 
+extension ViewController: LSPlayerDelegate {
+  func lsPlayer(isBuffering: Bool) {
+    if isBuffering {
+		print("Video is buffering")
+    } else {
+      print("Video is not buffering")
+    }
+  }
+
+  func lsPlayerReadyWithImage() {
+    print("Player is ready to display the image")
+  }
+
+  func lsPlayerReadyWithVideo(duration: Double) {
+  	player.play()
+    print("Player is ready to display the 360 video")
+  }
+
+  func lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) {
+    print("Player has updated its state")
+  }
+
+  func lsPlayerHasEnded() {
+  	player.close()
+    print("Video has ended")
+  }
+
+  func lsPlayerDidTap() {
+    print("The user tapped the player")
+  }
+}
+
+```
+<br><br>
 ## LSPlayerDelegate Protocol
 
 Conform to this protocol to get notified of different events and state of the LSPlayer  
 <br>
-### lsPlayer(isBuffering: Bool) - required method  
+#### lsPlayer(isBuffering: Bool) - required method  
 
 Called when LSPlayer changes its buffering state. isBuffering - true when the video is buffering, false  otherwise.  
 <br>
 
-### lsPlayerReadyWithImage() - required method  
+#### lsPlayerReadyWithImage() - required method  
 
 Called when LSPlayer is ready to display the image.  
 <br>
 
-### lsPlayerReadyWithVideo(duration: Double) - ???????  
+#### lsPlayerReadyWithVideo(duration: Double) - ???????  
 
 Called when LSPlayer is ready to play the video. duration - the duration of the video  
 <br>
 
-### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
+#### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
 
 Called when LSPlayer has updated its state.  
 <br>
 
 
-### lsPlayerHasEnded() - required method  
+#### lsPlayerHasEnded() - required method  
 
 Called when the current video playing in LSPlayer ended.  
 <br>
 
-### lsPlayerDidTap() - optional method  
+#### lsPlayerDidTap() - optional method  
 
 Called when LSPlayer receives a tap.  
 <br><br>
 
 ## LSPlayer
 
-### init(frame: CGRect)  
+#### init(frame: CGRect, withMenu: Bool = true)  
+
+Initialize a LSPlayer with or without the control menu that contains UI elements for controlling the video. (Play/Pause/VR cardboard mode/Seek)
 
 ```swift
+// init player with the control menu
 var player = LSPlayer(frame: self.view.frame)
+var player = LSPlayer(frame: self.view.frame, withMenu: true)
+
+// init player without the control menu
+var player = LSPlayer(frame: self.view.frame, withMenu: false)
 ```
 
-### delegate: LSPlayerDelegate?
+#### initMedia(_ file: URL, withHeatmap: Bool = false)
+
+Loads 360 video or photo from the URL provided. If withHeatmap is set to true, logs the heatmap.
+
+```swift
+// init media without logging the heatmap
+player.initMedia("https://my360video.m3u8")
+player.initMedia("https://my360video.m3u8", withHeatmap: false)
+
+// init with heatmap logging
+player.initMedia("https://my360video.m3u8", withHeatmap: true)
+```
+
+#### delegate: LSPlayerDelegate?
 The delegate object that conforms to the LSPlayerDelegate protocol.    
 
 ```swift
@@ -147,14 +196,14 @@ Get only property. A boolean that denotes whether the video is currently playing
 player.isPlaying
 ```
 
-#### currentTime: Double
+#### currentTime: Double?
 Get only property. Returns the current time of the video.
 
 ```swift
 player.currentTime
 ```
 
-#### duration: Double
+#### duration: Double?
 Get only property. Returns the duration of the video.
 
 ```swif
@@ -170,14 +219,28 @@ if false == player.isMuted {
 }
 ```
 
-#### initMedia(_ file: URL)
+#### invalidate()
+Destroy, clean up, and remove player.
 
-Loads 360 video or photo from the URL provided.
+#### seek(to second: Int)
+
+Programatically seek to specific timecode.
+
+Set timecode to 30 seconds:
+```swift
+player.seek(to: 30)
+```
+Player behavior will follow what `player.isPlaying` is set to. ie if video is pause, video will stay paused at new timecode.
+Automatically called when user interacts with timeline
+
+#### playLongerAnimation(completionCallback: @escaping () -> ())
+Plays the Littlstar animation and execute the code in the completionCallback when the animation is done.
 
 ```swift
-player.initMedia("https://my360video.m3u8")
+    player.playLongerAnimation {
+      self.player.close()
+    }
 ```
-
 
 #### play()
 
@@ -210,16 +273,6 @@ player.pause()
 ```
 
 
-#### seek(to second: Int)
-
-Programatically seek to specific timecode.
-
-Set timecode to 30 seconds:
-```swift
-player.seek(to: 30)
-```
-Player behavior will follow what `player.isPlaying` is set to. ie if video is pause, video will stay paused at new timecode.
-Automatically called when user interacts with timeline
 
 
 #### invalidate()
