@@ -1,5 +1,4 @@
 Littlstar iOS SDK
-==================
 
 ## Introduction
 
@@ -10,10 +9,10 @@ Table of Contents
 =================
   * [Introduction](#introduction)
   * [Installation](#installation)
-  	* [Cocoapods](#cocoapoads)
-  	* [Carth]
+  	* [Cocoapods](#cocoapods)
+  	* [Carthage](#carthage)
   * [Hello Littlstar - Boilerplate Code Example](#hello-littlstar)
-  * Usage
+  * API Usage
     * [LSPlayerDelegate Protocols](#lsplayerdelegate-protocol)
     * [LSPlayer Methods](#lsplayer)
 
@@ -43,11 +42,47 @@ After installing the cocoapod into your project import ls-ios-sdk with Swift
 ### Carthage
 ….TODO
 
-
-
-
 ## Hello Littlstar
 
+
+### Boilerplate code
+```
+import ls_ios_sdk
+class ViewController: UIViewController {
+
+  var player: LSPlayer!
+
+  override var prefersStatusBarHidden: Bool {
+    return true
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    player = LSPlayer(frame: self.view.frame, viewController: self)
+    self.view.addSubview(player)
+
+    let hlsExample = URL(string:"https://360.littlstar.com/production/76b490a5-2125-4281-b52d-8198ab0e817d/mobile_hls.m3u8")!
+    player.initMedia(hlsExample)
+  }
+
+  @objc func play() {
+    if player.isPlaying {
+      player.pause()
+    } else {
+      player.play()
+    }
+  }
+
+  @objc func mute() {
+    if player.isMuted {
+      player.isMuted = false
+    } else {
+      player.isMuted = true
+    }
+  }
+}
+```
 ## LSPlayerDelegate Protocol
 
 Conform to this protocol to get notified of different events and state of the LSPlayer  
