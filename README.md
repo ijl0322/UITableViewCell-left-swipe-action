@@ -3,31 +3,38 @@
 
 ## LSPlayerDelegate Protocol
 
-Conform to this protocol to get notified of different events and state of the LSPlayer
+Conform to this protocol to get notified of different events and state of the LSPlayer  
+
 
 ### lsPlayer(isBuffering: Bool) - required method  
 
-Called when LSPlayer changes its buffering state. isBuffering - true when the video is buffering, false otherwise.
+Called when LSPlayer changes its buffering state. isBuffering - true when the video is buffering, false  otherwise.  
+
 
 ### lsPlayerReadyWithImage() - required method  
 
-Called when LSPlayer is ready to display the image.
+Called when LSPlayer is ready to display the image.  
+
 
 ### lsPlayerReadyWithVideo(duration: Double) - ???????  
 
-Called when LSPlayer is ready to play the video. duration - the duration of the video
+Called when LSPlayer is ready to play the video. duration - the duration of the video  
+
 
 ### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
 
-Called when LSPlayer has updated its state. 
+Called when LSPlayer has updated its state.  
+
 
 ### lsPlayerHasEnded() - required method  
 
-Called when the current video playing in LSPlayer ended.
+Called when the current video playing in LSPlayer ended.  
+
 
 ### lsPlayerDidTap() - optional method  
 
-Called when LSPlayer receives a tap.
+Called when LSPlayer receives a tap.  
+
 
 ---
 
