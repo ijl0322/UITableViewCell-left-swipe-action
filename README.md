@@ -1,12 +1,52 @@
+Littlstar iOS SDK
+==================
 
-Table of contents
+## Introduction
+
+Littlstar iOS 360 photo/video player SDK
+The Littlstar SDK is a developer library to easily build and implement mobile applications that utilize immersive **360° video & images** content. 360° video is a special type of video that covers the complete surroundings of the camera. Content can be hosted on the [*Littlstar*](http://littlstar.com) back-end service (recommended) or another back-end service. 360° videos and images can also be loaded and played from a users phone (sideloading).
+
+Table of Contents
 =================
+  * [Introduction](#introduction)
+  * [Installation](#installation)
+  	* [Cocoapods](#cocoapoads)
+  	* [Carth]
+  * [Hello Littlstar - Boilerplate Code Example](#hello-littlstar)
   * Usage
     * [LSPlayerDelegate Protocols](#lsplayerdelegate-protocol)
     * [LSPlayer Methods](#lsplayer)
 
 
----
+Installation
+-------
+### Cocoapods
+Get [Cocoapods](http://guides.cocoapods.org/using/getting-started.html#installation)
+
+Add the pod to your podfile
+```
+platform :ios, "9.0"
+workspace 'Hello Littlstar 360 Player'
+
+target "Hello Littlstar 360 Player" do
+    pod 'ls-ios-sdk'
+end
+```
+run
+```
+$ pod install
+```
+
+After installing the cocoapod into your project import ls-ios-sdk with Swift
+`import ls_ios_sdk`
+
+### Carthage
+….TODO
+
+
+
+
+## Hello Littlstar
 
 ## LSPlayerDelegate Protocol
 
@@ -18,9 +58,11 @@ Conform to this protocol to get notified of different events and state of the LS
 Called when LSPlayer changes its buffering state. isBuffering - true when the video is buffering, false  otherwise.  
 
 
+
 ### lsPlayerReadyWithImage() - required method  
 
 Called when LSPlayer is ready to display the image.  
+
 
 
 ### lsPlayerReadyWithVideo(duration: Double) - ???????  
@@ -28,9 +70,11 @@ Called when LSPlayer is ready to display the image.
 Called when LSPlayer is ready to play the video. duration - the duration of the video  
 
 
+
 ### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
 
 Called when LSPlayer has updated its state.  
+
 
 
 ### lsPlayerHasEnded() - required method  
@@ -38,9 +82,11 @@ Called when LSPlayer has updated its state.
 Called when the current video playing in LSPlayer ended.  
 
 
+
 ### lsPlayerDidTap() - optional method  
 
 Called when LSPlayer receives a tap.  
+
 
 
 ---
