@@ -245,7 +245,11 @@ Plays the Littlstar animation and execute the code in the completionCallback whe
 #### close()
 Calls `self.invalidate()` to destroy the LSPlayer. 
 If the parent view controller of the LSPlayer is on a navigation controller stack, this function pops the the view controller off the stack. 
-To Implement a custom `close()` function, override this function and make sure to call `self.invalidate()` to prevent memory leaks.
+To Implement a custom `close()` function, override this function and make sure to call `self.invalidate()` to properly destroy the LSPlayer and prevent memory leaks.
+
+```swift
+player.close()
+```
 
 #### play()
 
@@ -259,13 +263,6 @@ If the media is an image, has no effect.
 player.play()
 ```
 
-#### setVRMode(in viewController: UIViewController?, enable: Bool)
-Enter or exit VR mode.
-
-
-viewController - the viewController the LSPlayer is in. 
-enable - when set to true, enters VR mode. Exits VR mode when set to false. 
-
 #### pause()
 
 Pauses video at current timecode.
@@ -277,14 +274,19 @@ If the media is an image, has no effect.
 player.pause()
 ```
 
+#### setVRMode(enable: Bool)
+Enter or exit VR mode.
 
+viewController - the viewController the LSPlayer is in. 
+enable - when set to true, enters VR mode. Exits VR mode when set to false. 
 
-
-#### invalidate()
 ```swift
-player.invalidate()
+// Enter VR mode
+player.setVRMode(enable: true)
+
+// Exit VR mode
+player.setVRMode(enable: false)
 ```
-destroy, clean up, and remove player.
 
 <br><br>
 
