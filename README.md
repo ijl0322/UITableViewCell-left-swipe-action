@@ -5,27 +5,27 @@
 
 Conform to this protocol to get notified of different events and state of the LSPlayer
 
-#### lsPlayer(isBuffering: Bool) - required method  
+### lsPlayer(isBuffering: Bool) - required method  
 
 Called when LSPlayer changes its buffering state. isBuffering - true when the video is buffering, false otherwise.
 
-#### lsPlayerReadyWithImage() - required method  
+### lsPlayerReadyWithImage() - required method  
 
 Called when LSPlayer is ready to display the image.
 
-#### lsPlayerReadyWithVideo(duration: Double) - ???????  
+### lsPlayerReadyWithVideo(duration: Double) - ???????  
 
 Called when LSPlayer is ready to play the video. duration - the duration of the video
 
-#### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
+### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
 
 Called when LSPlayer has updated its state. 
 
-#### lsPlayerHasEnded() - required method  
+### lsPlayerHasEnded() - required method  
 
 Called when the current video playing in LSPlayer ended.
 
-#### lsPlayerDidTap() - optional method  
+### lsPlayerDidTap() - optional method  
 
 Called when LSPlayer receives a tap.
 
@@ -33,13 +33,13 @@ Called when LSPlayer receives a tap.
 
 ## LSPlayer
 
-#### init(frame: CGRect)  
+### init(frame: CGRect)  
 
 ```swift
 var player = LSPlayer(frame: self.view.frame)
 ```
 
-#### delegate: LSPlayerDelegate?
+### delegate: LSPlayerDelegate?
 The delegate object that conforms to the LSPlayerDelegate protocol.    
 
 `player.delegate = self`
