@@ -214,7 +214,7 @@ player.duration
 Get/Set property. A boolean that denotes whether the video is muted. 
 
 ```swift
-if false == player.isMuted {
+if player.isMuted == false {
      player.isMuted = true
 }
 ```
@@ -241,6 +241,11 @@ Plays the Littlstar animation and execute the code in the completionCallback whe
       self.player.close()
     }
 ```
+
+#### close()
+Calls `self.invalidate()` to destroy the LSPlayer. 
+If the parent view controller of the LSPlayer is on a navigation controller stack, this function pops the the view controller off the stack. 
+To Implement a custom `close()` function, override this function and make sure to call `self.invalidate()` to prevent memory leaks.
 
 #### play()
 
