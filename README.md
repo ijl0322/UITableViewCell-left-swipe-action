@@ -1,5 +1,7 @@
 
-## LSPlayerDelegate Protocol
+---
+
+### LSPlayerDelegate Protocol
 
 Conform to this protocol to get notified of different events and state of the LSPlayer
 
@@ -31,9 +33,7 @@ var player = LSPlayer(frame: self.view.frame)
 
 #### delegate: LSPlayerDelegate?
 The delegate object that conforms to the LSPlayerDelegate protocol.    
-``` swift
-player.delegate = self
-```
+
 `player.delegate = self`
 
 #### isPlaying: Bool
