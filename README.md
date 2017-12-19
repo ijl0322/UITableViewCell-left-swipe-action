@@ -1,5 +1,6 @@
 Littlstar iOS SDK
 =================
+<br>
 
 Introduction
 -------
@@ -14,9 +15,10 @@ Table of Contents
   	* [Cocoapods](#cocoapods)
   	* [Carthage](#carthage)
   * [Hello Littlstar - Boilerplate Code Example](#hello-littlstar)
-  * [API Usage](#api-usage)
+  * [API Usage](#lsplayerdelegate-protocol)
     * [LSPlayerDelegate Protocols](#lsplayerdelegate-protocol)
     * [LSPlayer Methods](#lsplayer)
+    * [LSPlayer Gestures](#gestures)
 <br><br>
 
 Installation
@@ -41,8 +43,10 @@ $ pod install
 After installing the cocoapod into your project import ls-ios-sdk with Swift
 `import ls_ios_sdk`
 <br><br>
+
 ### Carthage
 ….TODO
+<br><br>
 
 Hello Littlstar
 -------
@@ -85,9 +89,6 @@ class ViewController: UIViewController {
   }
 }
 ```
-<br><br>
-API Usage
--------
 
 ## LSPlayerDelegate Protocol
 
@@ -122,7 +123,7 @@ Called when the current video playing in LSPlayer ended.
 ### lsPlayerDidTap() - optional method  
 
 Called when LSPlayer receives a tap.  
-<br>
+<br><br>
 
 ## LSPlayer
 
@@ -227,6 +228,7 @@ player.invalidate()
 ```
 destroy, clean up, and remove player.
 
+<br><br>
 
 ## Gestures
 
