@@ -28,9 +28,9 @@ Table of Contents
 Installation
 -------
 ### Cocoapods
-Get [Cocoapods](http://guides.cocoapods.org/using/getting-started.html#installation)
-Navigate to the directory of the Xcode project.
-run
+Get [Cocoapods](http://guides.cocoapods.org/using/getting-started.html#installation)<br>
+Navigate to the directory of the Xcode project.<br>
+run<br>
 ```
 $ pod init
 ```
@@ -58,13 +58,14 @@ After installing the cocoapod into your project import ls-ios-sdk with Swift
 
 Configuration
 -------
+...TODO
 <br><br>
 
 Hello Littlstar
 -------
 
 ### Boilerplate code
-```
+```swift
 import ls_ios_sdk
 class ViewController: UIViewController {
 
@@ -73,9 +74,12 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // Initialize LSPlayer
     player = LSPlayer(frame: self.view.frame)
     player.delegate = self
     self.view.addSubview(player)
+
+    // Initialize Media
     let hlsExample = URL(string:"https://360.littlstar.com/production/76b490a5-2125-4281-b52d-8198ab0e817d/mobile_hls.m3u8")!
     player.initMedia(hlsExample)
   }
@@ -97,6 +101,7 @@ class ViewController: UIViewController {
   }
 }
 
+// Conform to the LSPlayerDelegate protocol and implement all required and/or optional delegate methods
 extension ViewController: LSPlayerDelegate {
   func lsPlayer(isBuffering: Bool) {
     if isBuffering {
@@ -152,9 +157,10 @@ Called when LSPlayer is ready to play the video. duration - the duration of the 
 
 #### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
 
-Called when LSPlayer has updated its state.  
+Called when LSPlayer has updated its state.<br>  
+currentTime - the current timecode of the video.<br>
+bufferedTime - the number of seconds buffered.
 <br>
-
 
 #### lsPlayerHasEnded() - required method  
 
@@ -195,7 +201,8 @@ player.initMedia("https://my360video.m3u8", withHeatmap: false)
 // init with heatmap logging
 player.initMedia("https://my360video.m3u8", withHeatmap: true)
 ```
-<br><br>
+---
+
 ### Properties
 
 #### delegate: LSPlayerDelegate?
@@ -234,7 +241,7 @@ if player.isMuted == false {
      player.isMuted = true
 }
 ```
-<br><br>
+---
 ### Functions
 
 #### invalidate()
@@ -310,6 +317,7 @@ player.setVRMode(enable: false)
 
 ### Single Tap
 Toggles the menu UI.
+Calls the LSPlayerDelegate method lsPlayerDidTap() if it is implemented. 
 
 ### Pan Gesture (single finger)
 Rotates 360 video.
