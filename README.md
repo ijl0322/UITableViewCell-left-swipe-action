@@ -1,17 +1,9 @@
+
 Table of contents
 =================
-
-  * [LSPlayer Protocols](#lsplayerdelegate-protocol)
-  * [Table of contents](#table-of-contents)
-  * [Installation](#installation)
-  * [Usage](#usage)
-    * [STDIN](#stdin)
-    * [Local files](#local-files)
-    * [Remote files](#remote-files)
-    * [Multiple files](#multiple-files)
-    * [Combo](#combo)
-  * [Tests](#tests)
-  * [Dependency](#dependency)
+  * Usage
+    * [LSPlayerDelegate Protocols](#lsplayerdelegate-protocol)
+    * [LSPlayer Methods](#lsplayer)
 
 
 ---
