@@ -57,7 +57,7 @@ After installing the cocoapod into your project import ls-ios-sdk.
 import ls_ios_sdk
 ```
 
-```objective-c
+```Objective-C
 // Objective-C
 @import ls_ios_sdk;
 ```
@@ -201,7 +201,7 @@ LSPlayer *player;
 
 @end
 ```
-
+<br><br>
 ## LSPlayerDelegate Protocol
 
 Conform to this protocol to get notified of different events and state of the LSPlayer  
@@ -247,12 +247,24 @@ Called when LSPlayer receives a tap.
 Initialize a LSPlayer with or without the control menu that contains UI elements for controlling the video. (Play/Pause/VR cardboard mode/Seek)
 
 ```swift
+// Swift
+
 // init player with the control menu
 var player = LSPlayer(frame: self.view.frame)
 var player = LSPlayer(frame: self.view.frame, withMenu: true)
 
 // init player without the control menu
 var player = LSPlayer(frame: self.view.frame, withMenu: false)
+```
+
+```objective-c
+// Objective-C
+
+// init player with the control menu
+LSPlayer *player = [[LSPlayer alloc] initWithFrame:self.view.frame withMenu:true];
+
+// init player without the control menu
+LSPlayer *player = [[LSPlayer alloc] initWithFrame:self.view.frame withMenu:false];
 ```
 
 #### initMedia(_ file: URL, withHeatmap: Bool = false)
