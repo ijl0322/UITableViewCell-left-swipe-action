@@ -17,7 +17,7 @@ Table of Contents
   * [Configuration](#configuration)
   * [Hello Littlstar](#hello-littlstar)
     * [Boilerplate Code - Swift](#boilerplate-code---swift)
-    * [Boilerplate Code - Objective C](#boilerplate-code---objective-c)
+    * [Boilerplate Code - Objective-C](#boilerplate-code---objective-c)
   * [API Usage](#lsplayerdelegate-protocol)
     * [LSPlayerDelegate Protocols](#lsplayerdelegate-protocol)
     * [LSPlayer](#lsplayer)
@@ -138,7 +138,7 @@ extension ViewController: LSPlayerDelegate {
 
 ```
 
-### Boilerplate code - Objective C
+### Boilerplate code - Objective-C
 
 ```Objective-C
 @import ls_ios_sdk;
@@ -207,12 +207,12 @@ Called when LSPlayer changes its buffering state. isBuffering - true when the vi
 Called when LSPlayer is ready to display the image.  
 <br>
 
-#### lsPlayerReadyWithVideo(duration: Double) - ???????  
+#### lsPlayerReadyWithVideo(duration: Double) - required method
 
 Called when LSPlayer is ready to play the video. duration - the duration of the video  
 <br>
 
-#### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - ??????  
+#### lsPlayerHasUpdated(currentTime: Double, bufferedTime: Double) - required method
 
 Called when LSPlayer has updated its state.<br>  
 currentTime - the current timecode of the video.<br>
@@ -263,7 +263,7 @@ player.initMedia("https://my360video.m3u8", withHeatmap: true)
 ### Properties
 
 #### delegate: LSPlayerDelegate?
-The delegate object that conforms to the LSPlayerDelegate protocol.    
+The delegate object that conforms to the LSPlayerDelegate protocol.
 
 ```swift
 player.delegate = self
@@ -302,15 +302,30 @@ if player.isMuted == false {
 ### Functions
 
 #### invalidate()
-Destroy, clean up, and remove player.
+Destroy, clean up, and remove player. <br>
+```swift
+// Swift
+player.invalidate()
+```
+```objective-c
+// Objective-C
+[player invalidate];
+```
 
 #### seek(to second: Int)
 
 Programatically seek to specific timecode.
 
-Set timecode to 30 seconds:
+Set timecode to 30 seconds: <br>
+
 ```swift
+// Swift
 player.seek(to: 30)
+```
+
+```objective-c
+// Objective-C
+[player seekTo:30];
 ```
 Player behavior will follow what `player.isPlaying` is set to. ie if video is pause, video will stay paused at new timecode.
 Automatically called when user interacts with timeline
@@ -319,9 +334,17 @@ Automatically called when user interacts with timeline
 Plays the Littlstar animation and execute the code in the completionCallback when the animation is done.
 
 ```swift
+// Swift
 player.playLongerAnimation {
   self.player.close()
 }
+```
+
+```objective-c
+// Objective-C
+[player playLongerAnimationWithCompletionCallback:^{
+    [player close];
+}];
 ```
 
 #### close()
@@ -330,7 +353,13 @@ If the parent view controller of the LSPlayer is on a navigation controller stac
 To Implement a custom `close()` function, override this function and make sure to call `self.invalidate()` to properly destroy the LSPlayer and prevent memory leaks.
 
 ```swift
+// Swift
 player.close()
+```
+
+```objective-c
+// Objective-C
+[player close];
 ```
 
 #### play()
@@ -342,9 +371,14 @@ If the video is already playing, has no effect.
 If the media is an image, has no effect.
 
 ```swift
+// Swift
 player.play()
 ```
 
+```objective-c
+// Objective-C
+[player play];
+```
 #### pause()
 
 Pauses video at current timecode.
@@ -353,7 +387,13 @@ If the video is already paused, has no effect.
 If the media is an image, has no effect.
 
 ```swift
+// Swift
 player.pause()
+```
+
+```objective-c
+// Objective-C
+[player pause];
 ```
 
 #### setVRMode(enable: Bool)
@@ -361,11 +401,23 @@ Enter or exit VR cardboard mode.
 enable - when set to true, enters VR cardboard mode. Exits VR cardboard mode when set to false. 
 
 ```swift
+// Swift
+
 // Enter VR cardboard mode
 player.setVRMode(enable: true)
 
 // Exit VR cardboard mode
 player.setVRMode(enable: false)
+```
+
+```objective-c
+// Objective-C
+
+// Enter VR cardboard mode
+[player setVRModeWithEnable:true]; 
+
+// Exit VR cardboard mode
+[player setVRModeWithEnable:false]; 
 ```
 
 <br><br>
