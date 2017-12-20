@@ -137,7 +137,7 @@ extension ViewController: LSPlayerDelegate {
 }
 
 ```
-<br><br>
+
 ### Boilerplate code - Objective C
 
 ```Objective-C
@@ -148,7 +148,9 @@ extension ViewController: LSPlayerDelegate {
 @end
 
 @implementation ObjectiveCViewController
+
 LSPlayer *player;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -167,16 +169,16 @@ LSPlayer *player;
     [player play];
 }
 
-- (void) lsPlayerHasEnded {
+- (void)lsPlayerHasEnded {
     NSLog(@"Video has ended");
     [player close];
 }
 
-- (void) lsPlayerReadyWithImage {
+- (void)lsPlayerReadyWithImage {
     NSLog(@"Player is ready to display the image");
 }
 
-- (void) lsPlayerWithIsBuffering:(BOOL)isBuffering {
+- (void)lsPlayerWithIsBuffering:(BOOL)isBuffering {
     if (isBuffering) {
         NSLog(@"Player is buffering");
     } else {
@@ -184,7 +186,7 @@ LSPlayer *player;
     }
 }
 
-- (void) lsPlayerHasUpdatedWithCurrentTime:(double)currentTime bufferedTime:(double)bufferedTime {
+- (void)lsPlayerHasUpdatedWithCurrentTime:(double)currentTime bufferedTime:(double)bufferedTime {
     NSLog(@"Player has updated its state");
 }
 
