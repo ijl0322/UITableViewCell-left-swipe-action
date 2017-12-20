@@ -169,7 +169,7 @@ LSPlayer *player;
     [self.view addSubview:player];
     
     // Initialize Media
-    [player initMedia:[NSURL URLWithString:@"https://videos.littlstar.com/76b490a5-2125-4281-b52d-8198ab0e817d/mobile_1513415818.mp4"] withHeatmap:false];
+    [player initMedia:[NSURL URLWithString:@"https://360.littlstar.com/production/76b490a5-2125-4281-b52d-8198ab0e817d/mobile_hls.m3u8"] withHeatmap:false];
 }
 
 // Conform to the LSPlayerDelegate protocol and implement all required and/or optional delegate methods
@@ -272,12 +272,24 @@ LSPlayer *player = [[LSPlayer alloc] initWithFrame:self.view.frame withMenu:fals
 Loads 360 video or photo from the URL provided. If withHeatmap is set to true, logs the heatmap.
 
 ```swift
+// Swift
+
 // init media without logging the heatmap
 player.initMedia("https://my360video.m3u8")
 player.initMedia("https://my360video.m3u8", withHeatmap: false)
 
 // init with heatmap logging
 player.initMedia("https://my360video.m3u8", withHeatmap: true)
+```
+
+```objective-c
+// Objective-C
+
+// init media without logging the heatmap
+[player initMedia:[NSURL URLWithString:@"https://my360video.m3u8"] withHeatmap:false];
+
+// init with heatmap logging
+[player initMedia:[NSURL URLWithString:@"https://my360video.m3u8"] withHeatmap:true];
 ```
 ---
 
@@ -445,9 +457,9 @@ player.setVRMode(enable: false)
 
 ## Gestures
 
-### Single Tap
+#### Single Tap
 Toggles the menu UI.
 Calls the LSPlayerDelegate method lsPlayerDidTap() if it is implemented. 
 
-### Pan Gesture (single finger)
+#### Pan Gesture (single finger)
 Rotates 360 video.
