@@ -50,8 +50,17 @@ run
 $ pod install
 ```
 Make sure to open the xcworkspace generated rather than the xcodeproj file.
-After installing the cocoapod into your project import ls-ios-sdk with Swift
-`import ls_ios_sdk`
+After installing the cocoapod into your project import ls-ios-sdk.
+
+```swift
+// Swift
+import ls_ios_sdk
+```
+
+```objective-c
+// Objective-C
+@import ls_ios_sdk;
+```
 <br><br>
 
 ### Carthage
